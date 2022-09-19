@@ -18,6 +18,7 @@ COPY register.py /usr/bin
 COPY supervisor-apache.conf /etc/supervisord.d/40-apache.conf
 COPY examples/apache.conf /etc/httpd/conf.d/
 COPY examples/config.py wsgi.py portal /srv/
+COPY examples/freshdesk2documentation.txt /etc/apache2/
 COPY portal /srv/portal/
 COPY documentation /srv/documentation/
 
