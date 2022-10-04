@@ -52,4 +52,4 @@ jobs:
     secrets: inherit
     with:
       tag: ${{ needs.publish-new-release.outputs.tag }}
-
+      test: "This is a test input"
