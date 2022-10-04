@@ -48,7 +48,7 @@ jobs:
   Call-publish-container:
     if: startsWith(github.repository, 'osg-htc/')
     needs: Publish-New-Release
-    uses: osg-htc/osg-portal/.github/workflows/publish-container.yml
+    uses: osg-htc/osg-portal/.github/workflows/publish-container.yml@master
     with:
       tag: ${{ needs.Publish-New-Release.outputs.tag }}
 
