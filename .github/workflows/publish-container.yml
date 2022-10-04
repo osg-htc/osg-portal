@@ -14,6 +14,9 @@ on:
       tag:
         required: false
         type: string
+      test:
+        required: false
+        type: string
 jobs:
 
   build:
@@ -36,7 +39,7 @@ jobs:
     - name: Generate tag list
       id: generate-tag-list
       run: |
-        echo "${{github.event.inputs}}"
+        echo "${{ toJSON(github.event.inputs) }}"
         
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
         
