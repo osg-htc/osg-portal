@@ -49,6 +49,7 @@ jobs:
     if: startsWith(github.repository, 'osg-htc/')
     needs: Publish-New-Release
     uses: osg-htc/osg-portal/.github/workflows/publish-container.yml@master
+    secrets: inherit
     with:
       tag: ${{ needs.Publish-New-Release.outputs.tag }}
 
