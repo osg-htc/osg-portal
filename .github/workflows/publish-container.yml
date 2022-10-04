@@ -36,7 +36,7 @@ jobs:
     - name: Generate tag list
       id: generate-tag-list
       run: |
-        echo "${{github.event.inputs.tag}}"
+        echo "${{github.event.inputs}}"
         
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
         
