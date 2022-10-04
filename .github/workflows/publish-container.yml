@@ -14,9 +14,6 @@ on:
       tag:
         required: false
         type: string
-      test:
-        required: false
-        type: string
 jobs:
 
   build:
@@ -29,11 +26,11 @@ jobs:
         submodules: 'recursive'
 
     - name: Set the tag value if workflow_call
-      if: "${{ github.event.inputs.tag != '' }}"
-      run: GITHUB_TAG=${{ github.event.inputs.tag }}
+      if: "${{ inputs.tag != '' }}"
+      run: GITHUB_TAG=${{ inputs.tag }}
 
     - name: Set the tag value if not workflow_call
-      if: "${{ github.event.inputs.tag == '' }}"
+      if: "${{ inputs.tag == '' }}"
       run: GITHUB_TAG=${GITHUB_REF##*/v}
 
     - name: Generate tag list
