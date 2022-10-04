@@ -37,6 +37,7 @@ jobs:
       id: generate-tag-list
       run: |
         echo "${{ toJSON(inputs) }}"
+        echo "$(GITHUB_TAG)"
         
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
         
