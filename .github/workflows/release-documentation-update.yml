@@ -14,20 +14,20 @@ jobs:
         submodules: 'recursive'
         fetch-depth: 0
 
-#    - name: Pull, Merge, Push submodules
-#      run: |
-#        git config user.name "GitHub Actions"
-#        git config user.email "actions@github.com"
-#
-#        git submodule update --init --recursive --remote
-#
-#        if [ -n "$(git status --porcelain)" ]; then
-#          git add .
-#          git commit -m "Update Documentation"
-#          git push
-#        else
-#          echo "no changes";
-#        fi
+    - name: Pull, Merge, Push submodules
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+
+        git submodule update --init --recursive --remote
+
+        if [ -n "$(git status --porcelain)" ]; then
+          git add .
+          git commit -m "Update Documentation"
+          git push
+        else
+          echo "no changes";
+        fi
 
   publish-new-release:
     runs-on: ubuntu-latest
@@ -35,7 +35,6 @@ jobs:
     needs: Update-Submodules
     outputs:
       tag: ${{ steps.publish-new-release-tag.outputs.tag }}
-      test: ${{ toJSON(steps) }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -46,15 +45,10 @@ jobs:
       run: |
         echo "::set-output name=tag::$( python3 ./.github/scripts/create-documentation-release.py ${{ secrets.GITHUB_TOKEN }} )"
 
-    - name: Publish a new release
-      id: test
-      run: |
-        echo "::set-output name=test::test"
-
   Call-publish-container:
     if: startsWith(github.repository, 'osg-htc/')
     needs: Publish-New-Release
     uses: osg-htc/osg-portal/.github/workflows/publish-container.yml@master
     secrets: inherit
     with:
-      tag: ${{ toJSON(needs.publish-new-release) }}
+      tag: ${{ needs.publish-new-release.outputs.tag }}
