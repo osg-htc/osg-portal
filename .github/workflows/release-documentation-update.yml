@@ -29,7 +29,7 @@ jobs:
           echo "no changes";
         fi
 
-  Publish-New-Release:
+  publish-new-release:
     runs-on: ubuntu-latest
     if: startsWith(github.repository, 'osg-htc/')
     needs: Update-Submodules
@@ -51,5 +51,5 @@ jobs:
     uses: osg-htc/osg-portal/.github/workflows/publish-container.yml@master
     secrets: inherit
     with:
-      tag: ${{ needs.Publish-New-Release.outputs.tag }}
+      tag: ${{ needs.publish-new-release.outputs.tag }}
 
