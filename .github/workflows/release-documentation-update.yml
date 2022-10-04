@@ -33,11 +33,22 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.repository, 'osg-htc/')
     needs: Update-Submodules
+    outputs:
+      tag: ${{ steps.publish-new-release-tag.outputs.tag }}
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
 
     - name: Publish a new release
+      id: publish-new-release-tag
       run: |
-        python3 ./.github/scripts/create-documentation-release.py ${{ secrets.REPO_ACCESS_TOKEN }}
+        echo "::set-output name=tag:$( python3 ./.github/scripts/create-documentation-release.py ${{ secrets.GITHUB_TOKEN }} )"
+
+  Call-publish-container:
+    if: startsWith(github.repository, 'osg-htc/')
+    needs: Publish-New-Release
+    uses: osg-htc/osg-portal/.github/workflows/publish-container.yml
+    with:
+      tag: ${{ needs.Publish-New-Release.outputs.tag }}
+
