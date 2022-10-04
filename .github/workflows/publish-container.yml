@@ -37,7 +37,6 @@ jobs:
       id: generate-tag-list
       run: |
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
-        GITHUB_TAG=${GITHUB_REF##*/v}
         
         # If this is a itb release lets tag it as such
         if [[ $GITHUB_TAG == *"itb"* ]]; 
@@ -47,7 +46,7 @@ jobs:
           ITB_SUFFIX=""
         fi
         
-        tag_list=()=
+        tag_list=()
         for registry in hub.opensciencegrid.org docker.io; do
           for image_tag in "latest${ITB_SUFFIX}" "${GITHUB_TAG}"; do
             tag_list+=("$registry/$docker_repo":"$image_tag")
