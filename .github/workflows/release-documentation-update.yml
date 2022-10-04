@@ -35,7 +35,7 @@ jobs:
     needs: Update-Submodules
     outputs:
       tag: ${{ steps.publish-new-release-tag.outputs.tag }}
-      test: ${{ steps.test.outputs.test }}
+      test: ${{ toJSON(steps) }}
     steps:
     - uses: actions/checkout@v2
       with:
