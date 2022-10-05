@@ -28,7 +28,7 @@ jobs:
     - name: Generate tag list
       id: generate-tag-list
       run: |
-        
+
         if [ -z "${{ inputs.tag  }}" ]
         then 
           GITHUB_TAG=${{ inputs.tag }}
@@ -37,7 +37,7 @@ jobs:
         fi
         
         echo "${{ toJSON(inputs) }}"
-        echo "$(GITHUB_TAG)"
+        echo $GITHUB_TAG
         
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
         
@@ -58,7 +58,7 @@ jobs:
         # This causes the tag_list array to be comma-separated below,
         # which is required for build-push-action
         IFS=,
-        echo "::set-output name=taglist::${tag_list[*]}"        
+        echo "::set-output name=taglist::${tag_list[*]}"
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
