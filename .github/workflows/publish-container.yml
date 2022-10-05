@@ -25,17 +25,17 @@ jobs:
       with:
         submodules: 'recursive'
 
-    - name: Set the tag value if workflow_call
-      if: "${{ inputs.tag != '' }}"
-      run: GITHUB_TAG=${{ inputs.tag }}
-
-    - name: Set the tag value if not workflow_call
-      if: "${{ inputs.tag == '' }}"
-      run: GITHUB_TAG=${GITHUB_REF##*/v}
-
     - name: Generate tag list
       id: generate-tag-list
       run: |
+        
+        if [ -z "${{ inputs.tag  }}" ]
+        then 
+          GITHUB_TAG=${{ inputs.tag }}
+        else
+          GITHUB_TAG=${GITHUB_REF##*/v}
+        fi
+        
         echo "${{ toJSON(inputs) }}"
         echo "$(GITHUB_TAG)"
         
