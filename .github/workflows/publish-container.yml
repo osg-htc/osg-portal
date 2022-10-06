@@ -31,7 +31,7 @@ jobs:
 
         if [ -z "${{ inputs.tag  }}" ]
         then 
-          GITHUB_TAG=${GITHUB_REF##*/v}
+          GITHUB_TAG=${GITHUB_REF##*/}
         else
           GITHUB_TAG=${{ inputs.tag }}
         fi
