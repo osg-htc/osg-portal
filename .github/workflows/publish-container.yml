@@ -36,7 +36,12 @@ jobs:
           GITHUB_TAG=${{ inputs.tag }}
         fi
         
-        echo "${{ toJSON(inputs) }}"
+        echo "Master SHA:"
+        echo $(git rev-parse $GITHUB_REF_NAME)
+        
+        echo "Current SHA:"
+        echo $(git rev-parse HEAD)
+        
         echo $GITHUB_TAG
         
         docker_repo=${GITHUB_REPOSITORY/osg-htc/opensciencegrid}
@@ -51,7 +56,7 @@ jobs:
         
         tag_list=()
         for registry in hub.opensciencegrid.org docker.io; do
-          for image_tag in "latest${ITB_SUFFIX}" "${GITHUB_TAG}"; do
+          for image_tag in "latest${ITB_SUFFIX}" "${GITHUB_TAG}" "$(git rev-parse HEAD)"; do
             tag_list+=("$registry/$docker_repo":"$image_tag")
           done
         done
