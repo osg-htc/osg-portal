@@ -26,7 +26,7 @@
         {% block style %}{% endblock %}
     </head>
 
-    <body class="d-flex flex-column h-100">
+    <body class="">
 
         {% block header %}
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -43,13 +43,12 @@
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            {#<li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/application">OSPool Application</a>
-                            </li>#}
                             <li class="nav-item">
                                 <a class="nav-link" href="/documentation">Documentation</a>
                             </li>
                         </ul>
+                        <a class=" ms-auto btn btn-primary" aria-current="page" href="/application">Apply Now</a>
+
                     </div>
                 </div>
             </nav>
@@ -60,9 +59,64 @@
         </main>
 
         {% block footer %}
-            <footer class="footer mt-auto py-3">
-                <div class="container">
-                    <span class="text-muted">Please {{ "contact us" | contact_us }} if you experience any issues or have any questions.</span>
+            <footer class="mt-auto pt-5 flex-column">
+                <div class="shadow bg-light">
+                    <div class="container-xxl">
+                        <div class="row justify-content-center py-5">
+                            <div class="col-auto me-4 d-none d-md-flex">
+                                <a class="my-auto" href="/"><img style="height:5rem" src="/static/images/OSG-logo.svg" alt="OSG logo"></a>
+                            </div>
+                            <div class="col-12 col-md-8 col-lg-8">
+                                <div class="row justify-content-between my-2">
+
+                                    <div class="col-6 col-lg-4 col-xl-3 my-2">
+                                        <table>
+                                            <tbody><tr><th>Services</th></tr>
+                                            <tr><td><a href="https://osg-htc.org//services/access-point">OSG-Operated Access Points</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//services/open_science_pool">Open Science Pool</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//services/osdf">Open Science Data Federation</a></td></tr>
+                                        </tbody></table>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4 col-xl-3 my-2">
+                                        <table>
+                                            <tbody><tr><th>Support</th></tr>
+                                            <tr><td><a href="https://portal.osg-htc.org/documentation">Documentation</a></td></tr>
+                                            <tr><td><a href="https://portal.osg-htc.org/documentation/support_and_training/support/getting-help-from-RCFs/#virtual-office-hours">Office Hours</a></td></tr>
+                                            <tr><td><a href="mailto:support@osg-htc.org">Email</a></td></tr>
+                                        </tbody></table>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4 col-xl-3 my-2">
+                                        <table>
+                                            <tbody><tr><th>Engagement</th></tr>
+                                            <tr><td><a href="https://osg-htc.org//spotlight.html">OSG User Spotlights</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//news.html">News</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//events.html">Events</a></td></tr>
+                                        </tbody></table>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4 col-xl-3 my-2">
+                                        <table>
+                                            <tbody><tr><th>About OSG</th></tr>
+                                            <tr><td><a href="https://osg-htc.org//about/introduction">Introduction</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//about/publications">Publications</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//code-of-conduct">Code of Conduct</a></td></tr>
+                                            <tr><td><a href="https://osg-htc.org//acknowledging">Acknowledging OSG</a></td></tr>
+                                        </tbody></table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-xxl">
+                    <div class="row py-5">
+                        <div class="col text-center">
+                            This work is supported by <a href="https://www.nsf.gov/div/index.jsp?div=OAC">NSF</a> under Grant Nos. 2030508, 1836650, and 1148698. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.. <br>
+                        </div>
+                    </div>
                 </div>
             </footer>
         {% endblock %}

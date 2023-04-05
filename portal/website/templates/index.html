@@ -4,9 +4,118 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('website.static', filename='index.css') }}">
+    <script defer src="/static/js/pages/ospool-v1.js" type="application/javascript"></script>
+    <style>
+        #ospool-user-institutions {
+            content: " ";
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            z-index: -1;
+            background: url('/static/images/Map_1_projects.png') no-repeat center bottom;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px) brightness(40%);
+            background-color: black;
+        }
+
+        #ospool-user-institutions-overlay {
+            display: flex;
+            height: 400px;
+            font-family: Poppins, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
+
+    <div class="mt-4">
+        <div id="ospool-user-institutions"></div>
+        <div id="ospool-user-institutions-overlay" class="">
+            <div class="container text-white my-auto">
+                <div class="row justify-content-center py-3">
+                    <div class="col-12 col-xl-9 col-lg-10 col-md-12 col-12 col-sm-11 pt-1 pt-md-0 d-flex">
+                        <h2 class="text-center d-inline-block mx-auto">
+                            <span class="fs-1 d-inline-block">On the <b class="text-primary">OSPool</b> on <span id="ospool-date"></span></span><br>
+                            <span class="d-inline-block job-text py-2">
+                                <b class="d-inline-block text-primary">
+                                    <span id="ospool-jobs">1</span> jobs
+                                </b> completed
+                            </span><br>
+                            <span class="d-inline-block">Placed by</span>
+                            <b class="d-inline-block text-primary">
+                                <span id="ospool-users">1</span> researchers
+                            </b><br>
+                            <span class="d-inline-block">Triggering </span>
+                            <b class="d-inline-block text-primary">
+                                <span id="ospool-file-transfers">1</span> file transfers
+                            </b><br>
+                            <span class="d-inline-block">Consuming</span>
+                            <b class="d-inline-block text-primary">
+                                <span id="ospool-core-hours">1</span> core hours
+                            </b>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container-xxl">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-7 col-lg-8 col-md-10">
+                <h1 class="pt-5 fw-bold">Gateway to Capacity</h1>
+                <p>
+                    The OSG Portal is a researcher's gateway to harnessing all of the compute capacity that is
+                    available to them. With an OSG account you have access to OSG Services including: OSPool,
+                    OSG-Operated Access Points, and the Open Science Data Federation. Together these services
+                    provided researchers with a way to manage running jobs, resources to run these jobs on, and
+                    a data caching infrastructure to keep latency low.
+                </p>
+                <div class="row my-4 justify-content-center">
+                    <div class="col-4">
+                        <a class="text-decoration-none" href="https://osg-htc.org/services/ospool.html">
+                            <div class="p-3 border border-dark border-5 rounded-3 shadow-lg">
+                                <img class="img-fluid" src="/static/images/OSG-Colored-Icons_ospool.png"/>
+                                <h4 class="text-center text-dark mb-0 mt-3">OSPool</h4>
+                                <div class="text-center"><a href="https://osg-htc.org/services/ospool.html">Learn More</a></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a class="text-decoration-none" href="https://osg-htc.org/services/access-point.html">
+                            <div class="p-3 border border-dark border-5 rounded-3 shadow-lg">
+                                <img class="img-fluid" src="/static/images/OSG-Colored-Icons_access-point.png"/>
+                                <h4 class="text-center text-dark mb-0 mt-3">Access Point</h4>
+                                <div class="text-center"><a href="https://osg-htc.org/services/access-point.html">Learn More</a></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a class="text-decoration-none" href="https://osg-htc.org/services/osdf.html">
+                            <div class="p-4 border border-dark border-5 rounded-3 shadow-lg">
+                                <img class="img-fluid" src="/static/images/OSG-Colored-Icons_osdf.png"/>
+                                <h4 class="text-center text-dark mb-0 mt-3">OSDF</h4>
+                                <div class="text-center"><a href="https://osg-htc.org/services/osdf.html">Learn More</a></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-3">
+                <h1 class="pt-5 ">&nbsp</h1>
+                <a class="twitter-timeline" data-height="400" href="https://twitter.com/osg_htc?ref_src=twsrc%5Etfw">Tweets by osg_htc</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-7 col-lg-8 col-md-10">
+                <p>
+
+                </p>
+            </div>
+        </div>
     </div>
 {% endblock %}

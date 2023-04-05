@@ -1,14 +1,13 @@
 $text: #3a3a3a;
 $primary: #F1A52C;
 $secondary: #b67b3c;
-$white-offset: #fff7ea;
+$white-offset: #f1f1f1;
 $nav-link-color: $text;
 
-$light: lighten($secondary, 40%);
+$light: #f1f1f1;
 $nav-link-font-size:  1.1rem;
 
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
-$font-family-base: 'Titillium Web', sans-serif;
+$font-family-base: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 @import "bootstrap/bootstrap";
 
@@ -37,11 +36,8 @@ footer {
   .row{
     align-content: center;
   }
-  box-shadow: 0 -1px 2px #b3b3b3;
   margin-top: 2rem;
-  background-color: $light;
   display: flex;
-  height: 4rem;
   justify-content: center;
 }
 
@@ -84,3 +80,4 @@ body.subpage {
     display: flex;
   }
 }
+
