@@ -118,10 +118,10 @@ class FreshDeskAPI:
             "email": email,
             "description": description,
             "subject": "OSPool User - Account Creation",
-            "group_id": 12000006347,  # Actual Value 5000247959
+            "group_id": 5000247959,
             "priority": 1,
             "status": 2,
-            "type": "Other"  # Actual value User Facilitation-Account or login
+            "type": "User Facilitation-Account or login"
         }
 
         return self.create_ticket(**ticket_data)
