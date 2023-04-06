@@ -12,17 +12,21 @@
             <div class="col-12 col-xl-7 col-lg-8 col-md-10">
                 <h1>Schedule A Consultation</h1>
                 <p>
-                    Before we can give you access to the OSPool we ask that researchers meet with our Research
-                    Computing Facilitators, so they can help you manage your workloads on our resources as effectively
-                    as possible. To help us help you we ask that you provide some basic information on your compute
-                    and storage needs.
+                    <b>OSPool capacity is available to you without a proposal, and without a previous allocation.</b>
+                    <img
+                            class="mb-2 popper"
+                            src="/static/images/info-circle.svg"
+                            alt="Exclamation Circle"
+                            data-bs-toggle="popover"
+                            data-bs-trigger="hover focus"
+                            data-bs-placement="bottom"
+                            data-bs-html="true"
+                            title="<div>Full use policy can be found in <a href='https://portal.osg-htc.org/documentation/overview/references/policy/'>documentation</a>.</div>"
+                    />
                 </p>
                 <p>
                     On filling out the form below you will be emailed with a ticket # and link so that
-                    we can follow up with you and a schedule consultation.
-                </p>
-                <p>
-                    We are excited to meet with you and look forward to helping you scale up your research!
+                    we can follow up with you and a schedule consultation. We are excited to meet with you and look forward to helping you scale up your research!
                 </p>
                 <h2>Request Form</h2>
                 <form id="consultation-form" name="consultation-form" method="post" action="">
@@ -129,4 +133,25 @@
 
 {% block postscript %}
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script>
+        let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new bootstrap.Popover(popoverTriggerEl, {
+              delay: {show: 0, hide: 9999999},
+              customClass: "info-popover"
+          })
+        })
+        let hidePopover = (el) => {
+            if(
+                document.getElementsByClassName("info-popover")[0].matches(':hover') ||
+                document.getElementsByClassName("popper")[0].matches(':hover')
+            ){
+                window.setTimeout(hidePopover, 500, el)
+            } else {
+                let popover = bootstrap.Popover.getInstance(el.target)
+                popover.hide()
+            }
+        }
+        document.addEventListener('shown.bs.popover', hidePopover)
+    </script>
 {% endblock %}
