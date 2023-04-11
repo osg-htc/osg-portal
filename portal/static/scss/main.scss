@@ -3,8 +3,9 @@ $primary: #F1A52C;
 $secondary: #b67b3c;
 $white-offset: #f1f1f1;
 $nav-link-color: $text;
+$dark: #1F2C36;
+$light: #EAEAEA;
 
-$light: #f1f1f1;
 $nav-link-font-size:  1.1rem;
 
 $font-family-base: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -81,3 +82,36 @@ body.subpage {
   }
 }
 
+.accent-text {
+  font-family: Poppins, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+@include media-breakpoint-up(sm) {
+  .bookends {
+    background-image: url("/static/images/OSG_Bookends_start.png"), url("/static/images/OSG_Bookends_end.png");
+    background-position: left top, right bottom;
+    background-repeat: no-repeat;
+    background-size: 235px 378px, 235px 378px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .bookends {
+    background-size: 235px 378px, 235px 378px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .bookends {
+    background-size: 118px 189px, 118px 189px;
+  }
+}
+
+.hover-shadow {
+  box-shadow: 0 0rem 0rem rgba(0,0,0,0);
+  transition: box-shadow 0.3s ease-in-out 0s;
+
+  &:hover{
+    box-shadow: 0 .25rem .5rem rgba(0,0,0,.5);
+  }
+}

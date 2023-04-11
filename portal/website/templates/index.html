@@ -18,13 +18,15 @@
             -o-filter: blur(8px);
             -ms-filter: blur(8px);
             filter: blur(2px) brightness(30%);
-            background-color: black;
         }
 
         #ospool-user-institutions-overlay {
             display: flex;
             height: 400px;
-            font-family: Poppins, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+            font-family: Poppins, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            margin-top: -4px;
+            padding-left: 4px;
+            padding-right: 4px;
         }
 
         .cursor-pointer {
@@ -35,7 +37,7 @@
 
 {% block body %}
 
-    <div class="mt-4">
+    <div class="">
         <div id="ospool-user-institutions"></div>
         <div id="ospool-user-institutions-overlay" class="">
             <div class="container text-white my-auto">
