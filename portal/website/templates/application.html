@@ -21,9 +21,6 @@
             background: #eaeaeaba;
             display: flex;
         }
-
-
-
     </style>
 {% endblock %}
 
@@ -35,54 +32,54 @@
     <div class="container-xxl py-4">
         <div class="row justify-content-center">
             <div class="col-12 col-xl-7 col-lg-8 col-md-10">
-                <p>
+                <p class="fs-5">
                     If you are a researcher affiliated with a US Academic Institution,
-                    the capacity of the <a href="https://osg-htc.org/services/open_science_pool">OSPool</a> is available for you to harness.
+                    the capacity of the <a class="link-dark" href="https://osg-htc.org/services/open_science_pool">OSPool</a> is available for you to harness, just sign up!
                 </p>
-                <h5>Sign-up</h5>
+                <h4>About Yourself</h4>
                 <form id="consultation-form" name="consultation-form" method="post" action="">
                     <div>
-                        <label for="full-name" class="form-label">Full Name</label>
+                        <label for="full-name" class="form-label">Full Name*</label>
                         <input id="full-name" name="full-name" type="text" class="form-control" placeholder="First Last" required>
                     </div>
                     <div class="pt-3">
-                        <label for="institutional-affiliation" class="form-label">Institutional Affiliation</label>
+                        <label for="institutional-affiliation" class="form-label">Institutional Affiliation*</label>
                         <input id="institutional-affiliation" name="institutional-affiliation" class="form-control" required>
                     </div>
                     <div class="pt-3">
-                        <label for="email" class="form-label">Email (Please use the email address related to your institutional affiliation)</label>
+                        <label for="email" class="form-label">Email (Please use the email address related to your institutional affiliation)*</label>
                         <input id="email" name="email" type="email" class="form-control" placeholder="username@domain.ext" required>
                     </div>
                     <div class="pt-3">
-                        <label for="research-description" class="form-label">Briefly describe your research or research-related role</label>
+                        <label for="research-description" class="form-label">Briefly describe your research or research-related role*</label>
                         <textarea id="research-description" name="research-description" class="form-control" rows="4" required></textarea>
                     </div>
-                    <h3 class="mt-4">About your Computing Workloads</h3>
-                    <div class="pt-3">
+                    <h4 class="mt-4">About your Computing Workloads</h4>
+                    <div class="">
                         <label for="typical-computation" class="form-label">
-                            What is a typical computation for your work?
+                            What is a typical computation for your work?*
                         </label>
                         <textarea id="typical-computation" name="typical-computation" class="form-control" rows="4" required></textarea>
                     </div>
                     <div>
-                        <label for="resource-needs" class="form-label">What are your resource needs for a typical computation? Let us know about data sizes, computation runtime, and/or CPU/GPU/memory needs.</label>
+                        <label for="resource-needs" class="form-label">What are your resource needs for a typical computation? Let us know about data sizes, computation runtime, and/or CPU/GPU/memory needs.*</label>
                         <textarea id="resource-needs" name="resource-needs" class="form-control" rows="4" required></textarea>
                     </div>
                     <div class="pt-3">
                         <label for="computation-amount" class="form-label">
-                            How many computations would you like to run?
+                            How many computations would you like to run?*
                         </label>
                         <textarea id="computation-amount" name="computation-amount" class="form-control" rows="4" required></textarea>
                     </div>
                     <div>
-                        <label for="names-and-languages" class="form-label">What program(s) or coding language(s) do you use?</label>
+                        <label for="names-and-languages" class="form-label">What program(s) or coding language(s) do you use?*</label>
                         <textarea id="names-and-languages" name="names-and-languages" class="form-control" rows="4" required></textarea>
                     </div>
                     <div class="pt-3">
                         <label for="additional-info" class="form-label">
                             Is there anything else you'd like to share about your computing practices or methods?
                         </label>
-                        <textarea id="additional-info" name="additional-info" class="form-control" rows="4" required></textarea>
+                        <textarea id="additional-info" name="additional-info" class="form-control" rows="4"></textarea>
                     </div>
                     <div class="h-captcha mt-3" data-sitekey="deb6e053-975d-4c72-86be-6c91fdf4babf"></div>
                     <div id="form-error" class="alert alert-warning py-2 my-2" role="alert" hidden></div>
@@ -96,24 +93,24 @@
                     <div id="ospool-user-institutions-overlay" class="">
                         <div class="text-dark my-auto  pt-1 pt-md-0 d-flex">
                             <h4 class="text-center d-inline-block mx-auto mb-0">
-                                <span class="fs-3 d-inline-block">On the <b class="text-primary">OSPool</b> on <span id="ospool-date"></span></span><br>
+                                <span class="fs-3 d-inline-block">On the <span class="text-primary">OSPool</span> on <span id="ospool-date"></span></span><br>
                                 <span class="d-inline-block job-text py-2">
-                                    <b class="d-inline-block text-primary">
+                                    <span class="d-inline-block text-primary">
                                         <span id="ospool-jobs">1</span> jobs
-                                    </b> completed
+                                    </span> completed
                                 </span><br>
                                 <span class="d-inline-block">Placed by</span>
-                                <b class="d-inline-block text-primary">
+                                <span class="d-inline-block text-primary">
                                     <span id="ospool-users">1</span> researchers
-                                </b><br>
+                                </span><br>
                                 <span class="d-inline-block">Triggering </span>
-                                <b class="d-inline-block text-primary">
+                                <span class="d-inline-block text-primary">
                                     <span id="ospool-file-transfers">1</span> file transfers
-                                </b><br>
+                                </span><br>
                                 <span class="d-inline-block">Consuming</span>
-                                <b class="d-inline-block text-primary">
+                                <span class="d-inline-block text-primary">
                                     <span id="ospool-core-hours">1</span> core hours
-                                </b>
+                                </span>
                             </h4>
                         </div>
                     </div>
