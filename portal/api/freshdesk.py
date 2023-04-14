@@ -141,8 +141,6 @@ def create_ticket():
     name = json["full-name"]['value']
 
     # Delete extraneous information to parse the description
-    del json['email']
-    del json['full-name']
     del json['h-captcha-response']
     del json['g-recaptcha-response']
 
