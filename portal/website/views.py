@@ -28,6 +28,10 @@ def index():
 def application():
     return make_response(render_template("application.html"))
 
+@website_bp.route("/event-request")
+def event_request():
+    return make_response(render_template("event-request.html"))
+
 @website_bp.route("/health")
 def health():
     return "Hello!"

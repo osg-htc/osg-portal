@@ -3,8 +3,23 @@
 {% block title %}OSPool Application{% endblock %}
 
 {% block script %}
-    <script defer src="/static/js/pages/application.js"  type="application/javascript"></script>
     <script defer src="/static/js/pages/ospool-v1.js" type="application/javascript"></script>
+    <script type="module">
+        import {callback, submitForm} from "../../static/js/freshdesk.mjs";
+
+        let submitButton = document.getElementById("submit")
+        let form = document.getElementById("consultation-form")
+
+        const bodyOptions = {
+            "subject": "OSPool User - Account Creation",
+            "group_id": 5000247959,
+            "priority": 1,
+            "status": 2,
+            "type": "User Facilitation-Account or login"
+        }
+
+        submitButton.addEventListener("click", (e) => submitForm(e, form, bodyOptions, "/api/v1/freshdesk/ticket", callback))
+    </script>
 {% endblock %}
 
 {% block head %}
@@ -39,8 +54,8 @@
                 <h4>About Yourself</h4>
                 <form id="consultation-form" name="consultation-form" method="post" action="">
                     <div>
-                        <label for="full-name" class="form-label">Full Name*</label>
-                        <input id="full-name" name="full-name" type="text" class="form-control" placeholder="First Last" required>
+                        <label for="name" class="form-label">Full Name*</label>
+                        <input id="name" name="name" type="text" class="form-control" placeholder="First Last" required>
                     </div>
                     <div class="pt-3">
                         <label for="institutional-affiliation" class="form-label">Institutional Affiliation*</label>
@@ -129,52 +144,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="success-modal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">We look forward to meeting with you!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>
-                Please check your inbox at <b id="user-email"></b> for an email which you can use
-                to follow up or adjust any provided information as needed.
-            </p>
-            <p>
-                You can expect our Research Facilitation team to <b>respond in 1 business day!</b>
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="failure-modal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-danger">Application Submission Failed</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>
-                Your automatic application submission failed, please copy the below text and email it to
-                us at <a href="mailto:support@osg-htc.org">support@osg-htc.org</a> so that we can create a ticket manually.
-            </p>
-            <div class="rounded bg-light p-2">
-                <pre id="form-information" class="text-black mb-0"></pre>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
     </div>
 {% endblock %}
 

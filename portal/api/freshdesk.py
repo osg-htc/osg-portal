@@ -91,7 +91,7 @@ class FreshDeskAPI:
         Create a ticket
         """
 
-        data = json.dumps({
+        data = {
             'name': name,
             'email': email,
             'subject': subject,
@@ -99,58 +99,22 @@ class FreshDeskAPI:
             'description': description,
             'priority': priority,
             'status': status,
-            'type': type,
-            **kwargs
-        })
+            'type': type
+        }
 
         headers = {"Content-Type": "application/json"}
 
-        return self._post(f"/api/v2/tickets", data=data, headers=headers)
-
-    def create_ospool_ticket(
-            self,
-            name: str,
-            email: str,
-            description: str
-    ):
-        ticket_data = {
-            "name": name,
-            "email": email,
-            "description": description,
-            "subject": "OSPool User - Account Creation",
-            "group_id": 5000247959,
-            "priority": 1,
-            "status": 2,
-            "type": "User Facilitation-Account or login"
-        }
-
-        return self.create_ticket(**ticket_data)
+        return self._post(f"/api/v2/tickets", data=json.dumps(data), headers=headers)
 
 
 @freshdesk_api_bp.route("/ticket", methods=["POST"])
 def create_ticket():
     """Endpoint for creating a ticket in Freshdesk"""
 
-    if not verify_captcha(request.json['h-captcha-response']["value"]):
+    if not verify_captcha(request.json['h-captcha-response']):
         return make_response({'error': "You did not complete the h_captcha"}, 403)
 
-    json = request.json
-
-    # Grab the standard information
-    email = json["email"]['value']
-    name = json["full-name"]['value']
-
-    # Delete extraneous information to parse the description
-    del json['h-captcha-response']
-    del json['g-recaptcha-response']
-
-    # Grab the description
-    description = ""
-    for key in json.keys():
-        description += f"<h3>\n{json[key]['label']}\n</h3>\n"
-        description += f"<p>\n{json[key]['value']}\n</p>\n"
-
-    response = FreshDeskAPI().create_ospool_ticket(name=name, email=email, description=description)
+    response = FreshDeskAPI().create_ticket(**request.json)
 
     return make_response(response.json(), response.status_code)
 
