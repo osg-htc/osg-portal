@@ -3,10 +3,7 @@ Response Models for the API
 """
 
 import dataclasses
-from typing import Any, Dict, List, Optional, Union
-
-import flask
-from typing_extensions import Literal
+from typing import Any, Dict, List, Optional, Union, Literal
 
 
 @dataclasses.dataclass
