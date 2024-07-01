@@ -8,8 +8,11 @@ import os
 from portal.website import website_bp
 from portal.api import api_bp
 
+from portal.template_filters import contact_us
+
 BLUEPRINTS = [website_bp, api_bp]
 CONTEXT_PROCESSORS = []
+TEMPLATE_FILTERS = [contact_us]
 
 if os.path.exists("config.py"):
   HERE = os.getcwd() + "/"
@@ -73,6 +76,9 @@ def create_app(test_config=None):
 
         for cp in CONTEXT_PROCESSORS:
             app.context_processor(cp)
+
+        for tf in TEMPLATE_FILTERS:
+            app.add_template_filter(tf)
 
     app.logger.debug("Created!")
     return app
