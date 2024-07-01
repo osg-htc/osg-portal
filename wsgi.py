@@ -24,7 +24,7 @@ dictConfig(
                 "stream": "ext://flask.logging.wsgi_errors_stream",
             },
         },
-        "root": {"level": "DEBUG", "handlers": ["file", "wsgi"]},
+        "root": {"level": "DEBUG", "handlers": ["wsgi"]},
     }
 )
 
