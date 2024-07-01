@@ -17,14 +17,6 @@ dictConfig(
             }
         },
         "handlers": {
-            "file": {
-                "class": "logging.handlers.RotatingFileHandler",
-                "level": "DEBUG",
-                "formatter": "default",
-                "filename": os.path.join(logdir, "registration.log"),
-                "maxBytes": 10485760,
-                "backupCount": 5,
-            },
             "wsgi": {
                 "class": "logging.StreamHandler",
                 "level": "DEBUG",
