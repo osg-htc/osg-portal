@@ -25,23 +25,59 @@ export const validateForm = (form) => {
     return true;
 }
 
+/**
+ * Grabs all the form data as a dictionary of input information key'd by name
+ * @param form - Form element
+ * @returns {{}}
+ */
 export const getFormData = (form) => {
-    // Grabs all the form data as a dictionary of input information key'd by name
 
-    const FD = new FormData(form);
-    return Array.from(FD).reduce((currentValue,[name, value]) => {
-        let component = {
+    // Create default inputs for elements that are not reported if values are none
+    let defaults = Array.from(form.getElementsByTagName("input")).reduce((currentValue, element) => {
+        console.log(element)
+        if(element.type == "checkbox"){
+            currentValue.push([element.name, "off"])
+        }
+        return currentValue
+    }, [])
+
+    const formData = new FormData(form);
+    const formDataAndDefaults = defaults.concat(Array.from(formData)) // Order important, defaults should be overwritten
+
+    let namesAndInputs = formDataAndDefaults.reduce((currentValue,[name, value]) => {
+        currentValue[name] = {
             name: name,
-            value: value,
+            value: value
         }
 
-        if(document.getElementById(name)){
-            component["label"] = document.getElementById(name).labels[0].textContent.trim()
+        let element = document.getElementById(name)
+
+        if(element?.tagName === "SELECT"){
+            currentValue[name]["value"] = document.querySelectorAll(`option[value='${value}']`)[0].textContent.trim()
         }
 
-        currentValue[name] = component
+        if(isVisible(element)){
+            currentValue[name]["label"] = document.getElementById(name).labels[0].textContent.trim()
+        }
 
         return currentValue
     }, {})
+
+    // Convert 'off' and 'on' check values to bools
+    Object.keys(namesAndInputs).forEach((k,i) => {
+        if(['off', 'on'].includes(namesAndInputs[k].value)){
+            namesAndInputs[k].value = namesAndInputs[k].value === "off" ? "False" : "True";
+        }
+    })
+
+    return namesAndInputs
 }
 
+let isVisible = (htmlElement) => {
+    try {
+        return htmlElement.offsetParent !== null
+    } catch (e) {
+        console.error(e)
+        return false
+    }
+}

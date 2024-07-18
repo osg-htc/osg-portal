@@ -51,7 +51,6 @@
                     If you are a researcher affiliated with a US Academic Institution,
                     the capacity of the <a class="link-dark" href="https://osg-htc.org/services/open_science_pool">OSPool</a> is available for you to harness, just sign up!
                 </p>
-                <h4>About Yourself</h4>
                 <form id="consultation-form" name="consultation-form" method="post" action="">
                     <div>
                         <label for="name" class="form-label">Full Name*</label>
@@ -66,34 +65,93 @@
                         <input id="email" name="email" type="email" class="form-control" placeholder="username@domain.ext" required>
                     </div>
                     <div class="pt-3">
-                        <label for="research-description" class="form-label">Briefly describe your research or research-related role*</label>
+                        <label for="how-heard" class="form-label">How did you hear about the OSPool?</label>
+                        <select id="how-heard" name="how-heard" class="form-select" onchange="showOptionalInfoInput(this)">
+                            <option value="">Please select</option>
+                            <option value="Online search">Online search</option>
+                            <option value="Peers or colleagues at my institution">Peers or colleagues at my institution</option>
+                            <option value="Collaborator within a project">Collaborator within a project</option>
+                            <option value="Presentation at a conference or meeting">Presentation at a conference or meeting</option>
+                            <option value="Support staff at my institution">Support staff at my institution (e.g. research computing support, department administrator)</option>
+                            <option value="ACCESS">ACCESS (https://access-ci.org/)</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="pt-3">
+                        <label for="optional-info" class="form-label">Provide more information about how you heard about the OSPool (Optional)</label>
+                        <input id="optional-info" name="optional-info" type="text" class="form-control">
+                    </div>
+                    <div class="pt-3">
+                        <label for="group-use" class="form-label">Is someone in your group or collaboration already using the OSPool?</label>
+                        <select id="group-use" name="group-use" class="form-select">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Unsure">Unsure</option>
+                        </select>
+                    </div>
+                    <div class="pt-3">
+                        <label for="interest" class="form-label">What are you interested in?</label>
+                        <select id="interest" name="interest" class="form-select">
+                            <option value="I need an OSPool account for my research project">I need an OSPool account for my research project</option>
+                            <option value="I would like to talk about my research and explore options including the OSPool">I would like to talk about my research and explore options including the OSPool</option>
+                        </select>
+                    </div>
+                    <div class="pt-3">
+                        <label for="research-role" class="form-label">What is your research-related role?</label>
+                        <select id="research-role" name="research-role" class="form-select">
+                            <option value="Undergraduate">Undergraduate</option>
+                            <option value="Grad Student">Grad Student</option>
+                            <option value="Post-Doc">Post-Doc</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Research Staff">Research Staff</option>
+                            <option value="Computing/Support Staff">Computing/Support Staff</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="pt-3">
+                        <label for="research-description" class="form-label">Briefly describe your research objective and computational workload. How will access to the OSPool have an impact on meeting your research objectives?</label>
                         <textarea id="research-description" name="research-description" class="form-control" rows="4" required></textarea>
                     </div>
-                    <h4 class="mt-4">About your Computing Workloads</h4>
-                    <div class="">
-                        <label for="typical-computation" class="form-label">
-                            What is a typical computation for your work?*
-                        </label>
-                        <textarea id="typical-computation" name="typical-computation" class="form-control" rows="4" required></textarea>
+                    <div class="pt-3">
+                        <label for="collaboration" class="form-label">Is your research project contributing to the science objectives of a multi-institutional collaboration?</label>
+                        <select id="collaboration" name="collaboration" class="form-select">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Unsure">Unsure</option>
+                        </select>
                     </div>
                     <div class="pt-3">
-                        <label for="resource-needs" class="form-label">What are your resource needs for a typical computation? Let us know about data sizes, computation runtime, and/or CPU/GPU/memory needs.*</label>
-                        <textarea id="resource-needs" name="resource-needs" class="form-control" rows="4" required></textarea>
+                        <label for="computational-requirements" class="form-label">List the typical requirements of your computational workload, if you know - typical data size, computational needs (cores/memory), computational runtime.</label>
+                        <textarea id="computational-requirements" name="computational-requirements" class="form-control" rows="4"></textarea>
                     </div>
                     <div class="pt-3">
-                        <label for="computation-amount" class="form-label">
-                            How many computations would you like to run?*
-                        </label>
-                        <textarea id="computation-amount" name="computation-amount" class="form-control" rows="4" required></textarea>
+                        <label for="gpu" class="form-label">Does your workflow require access to GPU resources?</label>
+                        <select id="gpu" name="gpu" class="form-select">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
                     </div>
                     <div class="pt-3">
-                        <label for="names-and-languages" class="form-label">What program(s) or coding language(s) do you use?*</label>
-                        <textarea id="names-and-languages" name="names-and-languages" class="form-control" rows="4" required></textarea>
+                        <label for="storage-estimate" class="form-label">Estimate the overall amount of storage you will need for your project.</label>
+                        <input id="storage-estimate" name="storage-estimate" type="text" class="form-control">
                     </div>
                     <div class="pt-3">
-                        <label for="additional-info" class="form-label">
-                            Is there anything else you'd like to share about your computing practices or methods?
-                        </label>
+                        <label for="job-estimate" class="form-label">Can you estimate the number of jobs that you would need to run for your project or phase of your project?</label>
+                        <select id="job-estimate" name="job-estimate" class="form-select">
+                            <option value="Don’t know yet / unsure">Don’t know yet / unsure (we can help you figure this out in a consultation!)</option>
+                            <option value="Less than 1000 jobs">Less than 1000 jobs</option>
+                            <option value="1000 - 10,000 jobs">1000 - 10,000 jobs</option>
+                            <option value="10,000 - 100,000 jobs">10,000 - 100,000 jobs</option>
+                            <option value="100,000 - a million jobs">100,000 - a million jobs</option>
+                            <option value="Over a million jobs">Over a million jobs</option>
+                        </select>
+                    </div>
+                    <div class="pt-3">
+                        <label for="primary-software" class="form-label">What is the primary software/program/package(s) that you plan on using? If possible, provide a link to the program's website.</label>
+                        <textarea id="primary-software" name="primary-software" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="pt-3">
+                        <label for="additional-info" class="form-label">Is there any additional information you would like to share about your work?</label>
                         <textarea id="additional-info" name="additional-info" class="form-control" rows="4"></textarea>
                     </div>
                     <div class="h-captcha mt-3" data-sitekey="deb6e053-975d-4c72-86be-6c91fdf4babf"></div>
