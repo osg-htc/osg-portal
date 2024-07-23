@@ -139,7 +139,7 @@ export const formDataToFreshDescription = (formData) => {
 
     return Object.entries(formData).reduce((pv, [k, v]) => {
 
-        if(skipKeys.has(k)){
+        if(skipKeys.has(k) || !v['label']){
             return pv
         }
 

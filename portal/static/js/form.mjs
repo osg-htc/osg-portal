@@ -6,7 +6,7 @@ export const validateForm = (form) => {
 
     // Check that all input validity
     for (const el of form.querySelectorAll("[required]")) {
-      if (!el.reportValidity()) {
+      if (!el.reportValidity() && isVisible(el)) {
         errorNode.textContent = "Please fill out all elements in the form, if not applicable you can write 'NA'.";
         errorNode.hidden = false;
         return false;
@@ -34,7 +34,6 @@ export const getFormData = (form) => {
 
     // Create default inputs for elements that are not reported if values are none
     let defaults = Array.from(form.getElementsByTagName("input")).reduce((currentValue, element) => {
-        console.log(element)
         if(element.type == "checkbox"){
             currentValue.push([element.name, "off"])
         }

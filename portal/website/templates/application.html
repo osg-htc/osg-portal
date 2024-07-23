@@ -116,9 +116,28 @@
                         <label for="collaboration" class="form-label">Is your research project contributing to the science objectives of a multi-institutional collaboration?</label>
                         <select id="collaboration" name="collaboration" class="form-select">
                             <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="No" selected>No</option>
                             <option value="Unsure">Unsure</option>
                         </select>
+                    </div>
+                    <div id="collaboration-name-container" class="pt-3" hidden>
+                        <label for="collaboration-name" class="form-label">Collaboration Name:</label>
+                        <input type="text" id="collaboration-name" name="collaboration-name" list="collaborations" placeholder="Start typing..." class="form-control" required>
+                        <datalist id="collaborations">
+                            <option value="REDTOP">
+                            <option value="IceCube">
+                            <option value="IGWN">
+                            <option value="LSST">
+                            <option value="South Pole Telescope">
+                            <option value="VERITAS">
+                            <option value="XENON">
+                            <option value="GLUEX">
+                            <option value="CLAS12">
+                            <option value="MOLLER">
+                            <option value="EIC">
+                            <option value="Snowmass">
+                            <option value="KOTO">
+                        </datalist>
                     </div>
                     <div class="pt-3">
                         <label for="computational-requirements" class="form-label">List the typical requirements of your computational workload, if you know - typical data size, computational needs (cores/memory), computational runtime.</label>
@@ -227,5 +246,17 @@
             }
         }
         document.addEventListener('shown.bs.popover', hidePopover)
+
+        // If select with id 'collaboration' is 'Yes', show the 'collaboration-information-container' element
+        let collaborationSelect = document.getElementById("collaboration")
+        let collaborationNameContainer = document.getElementById("collaboration-name-container")
+        collaborationSelect.addEventListener("change", (e) => {
+            if(e.target.value === "Yes"){
+                collaborationNameContainer.hidden = false
+            } else {
+                collaborationNameContainer.hidden = true
+            }
+        })
+
     </script>
 {% endblock %}
