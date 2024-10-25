@@ -7,6 +7,11 @@ on:
       - v[0-9]+.[0-9]+.[0-9]+.[0-9]+             # Production Tag with Incremented Doc
       - v[0-9]+.[0-9]+.[0-9]+.itb.[0-9]+         # Development Tag
 
+  schedule:
+    - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
 jobs:
 
   build:
