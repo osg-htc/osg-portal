@@ -32,6 +32,10 @@ def application():
 def event_request():
     return make_response(render_template("event-request.html"))
 
+@website_bp.route("/contact")
+def contact():
+    return make_response(render_template("contact.html"))
+
 @website_bp.route("/health")
 def health():
     return "Hello!"
