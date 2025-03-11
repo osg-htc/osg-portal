@@ -131,3 +131,6 @@ dmypy.json
 config.py
 humans.ini
 logs/
+
+# Remove generated files
+portal/static/css/main.css
