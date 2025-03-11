@@ -26,7 +26,7 @@ COPY portal /srv/portal/
 COPY documentation /srv/documentation/
 
 # Allow apache to write to /srv/portal/static/css
-RUN chown apache:apache /srv/portal/static/css
+RUN mkdir /srv/portal/static/css && chown apache:apache /srv/portal/static/css
 
 
 ENV PYTHONUNBUFFERED=1
