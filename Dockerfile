@@ -25,6 +25,10 @@ COPY examples/freshdesk2documentation.txt /etc/apache2/
 COPY portal /srv/portal/
 COPY documentation /srv/documentation/
 
+# Allow apache to write to /srv/portal/static/css
+RUN chown apache:apache /srv/portal/static/css
+
+
 ENV PYTHONUNBUFFERED=1
 ENV CONFIG_DIR=/srv
 #ENTRYPOINT ["/opt/portal/run_local.sh"]
