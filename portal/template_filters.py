@@ -1,4 +1,5 @@
-from flask import Markup, current_app
+from flask import current_app
+from markupsafe import Markup
 
 def contact_us(text):
     return Markup(
