@@ -23,9 +23,17 @@ If you want to update the documentation you should do so on the [user-documenati
 This runs the web app components of the website, which means that the documentation will not work
 as that is served by Apache. This is the preferred way to test the web app locally. 
 
+Requires Python 3.10+. From the repository root:
+
 ```shell
-python3 portal/app.py
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m portal.app
 ```
+
+The app is then available at <http://localhost:9618>. It reads `config.py` from the repository root
+(see [Required Config Values](#required-config-values)).
 
 ### Running Apache Container
 
@@ -44,12 +52,15 @@ To run the registration server locally, build and run the testing container imag
     ```
   
 
-1. Access the local portal in your browser by accessing <https://localhost:8443>
+    If port 8443 is already in use, map a different host port (e.g. `-p 9443:443`).
+
+1. Access the local portal in your browser by accessing <https://localhost:8443>.
+   The container uses a self-signed certificate, so your browser will show a warning.
 
 1. For a login shell to the portal, run the following:
 
     ```shell
-    docker exec -it my-portal /bin/bash
+    docker exec -it osg-portal /bin/bash
     ```
         
 
